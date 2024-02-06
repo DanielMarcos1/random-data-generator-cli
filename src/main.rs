@@ -19,12 +19,17 @@ fn main() {
             command!("phone")
                 .about("Generates a random phone number and prints it on the console"),
         )
+        .subcommand(
+            command!("fullhuman")
+                .about("Generates a random human and prints it on the console"),
+        )
         .get_matches();
 
         match matches.subcommand() {
             Some(("name", _generate)) => generator::generate_name(),
             Some(("address", _generate)) => generator::generate_address(),
             Some(("phone", _generate)) => generator::generate_phone(),
+            Some(("fullhuman", _generate)) => generator::generate_fullhuman(),
             _ => {}
     }
 }
