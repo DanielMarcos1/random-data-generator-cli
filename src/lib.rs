@@ -4,13 +4,13 @@ mod generator;
 
 type Result<T> = std::result::Result<T, String>;
 
-fn main() {
+pub fn main() {
     if let Err(err) = run() {
         eprintln!("Error: {}", err);
     }
 }
 
-fn run() -> Result<()> {
+pub fn run() -> Result<()> {
     let matches = Command::new("Fake Data Generator")
         .version("0.1.3")
         .author("Daniel Marcos")
@@ -42,9 +42,3 @@ fn run() -> Result<()> {
             _ => Err(format!("Unrecognized command")),
         }
 }
-
-
-
-
-    
-
