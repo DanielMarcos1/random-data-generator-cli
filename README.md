@@ -5,7 +5,7 @@ This CLI project is a project based learning(PBL) study method in action, it doe
 
 
 
-## Demonstração
+## Demonstration
 
 In case you cloned the repository, you can type in your command line
 ```http
