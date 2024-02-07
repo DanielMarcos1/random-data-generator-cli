@@ -4,30 +4,29 @@ use fake::faker::job::en::{Field, Seniority, Title};
 use fake::faker::{address::en::CityName, name::en::Name, phone_number::en::PhoneNumber};
 use fake::Fake;
 
-// Define a trait to handle output
+// Aqui vai uma gambiarra para o compilador não pegar o println como tipo () e sim como uma string
+// facilitando os testes unitários de serem realizados
 trait OutputHandler {
     fn handle_output(&self, output: String);
 }
 
-// Implement the trait for the standard output
+
 impl OutputHandler for () {
     fn handle_output(&self, output: String) {
         println!("{}", output);
     }
 }
 
-// Test-specific output handler for testing
+
 pub struct TestOutputHandler;
 
-// Implement the trait for the test-specific output handler
 impl OutputHandler for TestOutputHandler {
     fn handle_output(&self, output: String) {
-        // Just print the output during tests
         println!("{}", output);
     }
 }
 
-// Updated generate_fullhuman to accept a closure implementing OutputHandler
+// Main logic
 pub fn generate_fullhuman<O>(output_handler: O)
 where
     O: OutputHandler,
@@ -73,7 +72,7 @@ where
     output_handler.handle_output(output);
 }
 
-// Implement the missing generate_name, generate_address, and generate_phone
+
 pub fn generate_name<O>(output_handler: O)
 where
     O: OutputHandler,
@@ -123,6 +122,5 @@ mod tests {
         generate_phone(output_handler);
     }
 
-    // ... (unchanged)
 }
 
